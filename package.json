@@ -1,0 +1,20 @@
+{
+  "name": "kanban-calendar-mvp",
+  "version": "1.0.0",
+  "description": "AI-powered Kanban Calendar productivity app MVP",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "start-backend": "cd backend && npm start",
+    "start-frontend": "cd frontend && ulimit -n 4096 && npm start",
+    "start-frontend-web": "cd frontend && ulimit -n 4096 && npm run web",
+    "dev": "./start-app.sh",
+    "dev-safe": "concurrently \"npm run start-backend\" \"npm run start-frontend-web\""
+  },
+  "keywords": ["react-native", "nodejs", "kanban", "calendar", "productivity"],
+  "author": "CanvasCortex",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
