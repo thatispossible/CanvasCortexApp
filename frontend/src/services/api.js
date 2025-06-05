@@ -1,4 +1,5 @@
-const API_BASE_URL = 'http://localhost:3000/api';
+// Use relative URL when deployed, localhost when developing
+const API_BASE_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/api';
 
 class ApiService {
   async request(endpoint, options = {}) {
