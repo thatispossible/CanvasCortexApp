@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const { initializeDatabase } = require('./database');
 
 // Import routes
@@ -20,11 +19,6 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Serve static files from frontend build (in production)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/web-build')));
-}
-
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
@@ -42,30 +36,17 @@ app.use('/api/calendar', calendarRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {
-  // In production, serve the frontend app
-  if (process.env.NODE_ENV === 'production') {
-    res.sendFile(path.join(__dirname, '../frontend/web-build', 'index.html'));
-  } else {
-    // In development, show API info
-    res.json({ 
-      message: 'Welcome to CanvasCortex API',
-      version: '1.0.0',
-      endpoints: {
-        health: '/health',
-        projects: '/api/projects',
-        tasks: '/api/tasks',
-        calendar: '/api/calendar'
-      }
-    });
-  }
-});
-
-// Catch all handler: send back React's index.html file for any non-API routes
-if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/web-build', 'index.html'));
+  res.json({ 
+    message: 'Welcome to CanvasCortex API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      projects: '/api/projects',
+      tasks: '/api/tasks',
+      calendar: '/api/calendar'
+    }
   });
-}
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {

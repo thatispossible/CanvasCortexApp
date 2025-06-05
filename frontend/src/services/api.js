@@ -1,5 +1,5 @@
-// Use relative URL when deployed, localhost when developing
-const API_BASE_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/api';
+// Use Railway API for both development and production
+const API_BASE_URL = 'https://canvascortexapp-production.up.railway.app/api';
 
 class ApiService {
   async request(endpoint, options = {}) {
