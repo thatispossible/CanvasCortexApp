@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd frontend && npm install && npx expo export:web && cd ../backend && npm install && NODE_ENV=production npm start",
+    "startCommand": "cd frontend && npm install && node --max-old-space-size=2048 node_modules/.bin/expo export:web && cd ../backend && npm install && NODE_ENV=production npm start",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
