@@ -178,3 +178,7 @@ Thumbs.db
 # Backup files
 *.bak
 *.backup 
+
+# SpecStory explanation file
+.specstory/.what-is-this.md
+.specstory/
